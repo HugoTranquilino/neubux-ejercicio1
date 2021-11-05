@@ -45,9 +45,6 @@
                         }                        
                     }
 
-                    $file = fopen("archivo.txt","a+");
-                    fputs($file,$response);
-                    fclose($file);
                 } else {
                     $error = 'La cantidad de caracteres de la segunda instrucción es diferente a la longitud proporcionada';
                 }                    

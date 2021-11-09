@@ -36,14 +36,25 @@
                         if (strpos($decode,preg_replace("/(.)\\1+/","$1",$list[$i]))) {
                             $response = $list[$i];
 
-                            $instruccion1 = ($list[0] == $response) ? 'SI' : 'NO' ;
-                            $instruccion2 = ($list[1] == $response) ? 'SI' : 'NO' ;
+                            $instruccion1 = ($list[0] == $response) ? 'si' : 'no' ;
+                            $instruccion2 = ($list[1] == $response) ? 'si' : 'no' ;
 
                             break;
                         } else {
                             $response = "No existe ninguna instrucción en el mensaje";
                         }                        
                     }
+
+                    if (file_exists("archivo.txt")) {
+                        unlink("archivo.txt");
+                        $file = fopen("archivo.txt","a+");
+                    }else{
+                        $file = fopen("archivo.txt","a+");
+                    }
+
+                    $data = (!empty($instruccion1) and !empty($instruccion2)) ? $instruccion1.PHP_EOL.$instruccion2 : $response ;
+                    fputs($file,$data);
+                    fclose($file);
 
                 } else {
                     $error = 'La cantidad de caracteres de la segunda instrucción es diferente a la longitud proporcionada';
@@ -108,6 +119,14 @@
                         }
                     ?>
                 </p>
+
+                <?php
+                    if ((!empty($instruccion1) and !empty($instruccion2)) or !empty($response)) {
+                        if (file_exists("archivo.txt")) {
+                            echo '<a class="btn" href="descarga.php" target="_blank" rel="noopener noreferrer">Ver resultados</a>';
+                        }
+                    }
+                ?>
             </div>
         </section>
 

@@ -107,19 +107,6 @@
             </span>
 
             <div class="resultado">
-                <h1>Respuesta</h1> 
-                <p class="">
-                    <?php 
-                        if (!empty($instruccion1) and !empty($instruccion2)) {
-                            echo $instruccion1;
-                            echo '<br/>';
-                            echo $instruccion2;
-                        }else{
-                            echo $response;
-                        }
-                    ?>
-                </p>
-
                 <?php
                     if ((!empty($instruccion1) and !empty($instruccion2)) or !empty($response)) {
                         if (file_exists("archivo.txt")) {

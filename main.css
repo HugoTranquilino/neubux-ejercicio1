@@ -34,13 +34,6 @@ body{
     padding: 7px;
     text-decoration: none;
 }
-.resultado > h1 {
-    color: #4a4646;
-    font-size: 18px;
-    font-weight: 600;
-    text-align: end;
-}
-.resultado > p {
-    font-size: 14px;
-    text-align: end;
+.resultado {
+    margin-top: 12px;
 }
